@@ -16,6 +16,13 @@ export type Country = {
     svg: string;
     alt: string;
   };
+  capital: string;
+  region: string;
+  subregion: string;
+  population: number;
+  languages: {
+    [key: string]: string;
+  };
 };
 
 async function getCountries(): Promise<Country[]> {
