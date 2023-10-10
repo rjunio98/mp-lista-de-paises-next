@@ -20,6 +20,7 @@ export default function Error() {
           width={24}
           height={24}
         />
+        Voltar
       </Link>
     </section>
   );
