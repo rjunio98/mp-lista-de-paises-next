@@ -1,16 +1,14 @@
 import type { Country } from "@/app/page";
-import Link from "next/link";
-import Image from "next/image";
 import CountryCard from "@/app/components/country-card";
+import Image from "next/image";
+import Link from "next/link";
 
-/*
-async function getCountryByName(name: string): Promise<Country> {
-  const response = await fetch(
-    `https://restcountries.com/v3.1/name/${name}?fullText=true`
-  );
-  return (await response.json())[0];
-}
-*/
+// async function getCountryByName(name: string): Promise<Country> {
+//   const response = await fetch(
+//     `https://restcountries.com/v3.1/name/${name}?fullText=true`
+//   );
+//   return (await response.json())[0];
+// }
 
 async function getCountryByName(name: string): Promise<Country> {
   const response = await fetch("https://restcountries.com/v3.1/all");
@@ -53,38 +51,36 @@ export default async function CountryPage({
       <h1 className="text-5xl text-center font-bold text-gray-800 my-16">
         {country.translations.por.common}
       </h1>
-
       <Link
         className="flex items-center py-2"
         href="/"
       >
         <Image
           src="/arrow-back.svg"
-          alt="ícone de seta de voltar"
+          alt="Ícone de seta de voltar"
           width={24}
           height={24}
         />
         Voltar
       </Link>
-
-      <article className="flex justify-between min-w-full p-10 bg-white rounded-xl">
+      <article className="flex md:flex-row flex-col justify-between min-w-full p-10 bg-white rounded-xl">
         <section>
           {country.capital && (
-            <h2 className="text-xl text-gray-800">
+            <h2 className="text-xl text-gray-800 mt-3">
               <b>🏙️ Capital:</b> {country.capital}
             </h2>
           )}
-          <h2 className="text-xl text-gray-800">
-            <b>🗺️ Continente:</b> {country.region} -{" "}
-            {country.subregion && `-${country.subregion}`}
+          <h2 className="text-xl text-gray-800 mt-3">
+            <b>🗺️ Continente:</b> {country.region}
+            {country.subregion && `- ${country.subregion}`}
           </h2>
-          <h2 className="text-xl text-gray-800">
+          <h2 className="text-xl text-gray-800 mt-3">
             <b>👨‍👩‍👧‍👦 População:</b> {formatter.format(country.population)}
           </h2>
           {country.languages && (
-            <h2 className="text-xl text-gray-800">
+            <h2 className="text-xl text-gray-800 mt-3">
               <b>🗣️ Línguas faladas:</b>
-              <br /> <br />
+              <br />
               {Object.values(country.languages).map((language) => (
                 <span
                   key={language}
@@ -96,8 +92,7 @@ export default async function CountryPage({
             </h2>
           )}
         </section>
-
-        <div className="relative h-auto w-96 shadow-md">
+        <div className="relative h-48 my-2 md:h-auto w-96 shadow-md md:order-last order-first">
           <Image
             src={country.flags.svg}
             alt={country.flags.alt}
@@ -106,13 +101,11 @@ export default async function CountryPage({
           />
         </div>
       </article>
-
       <section>
         <h3 className="mt-12 text-2xl font-semibold text-gray-800">
           Países que fazem fronteira
         </h3>
-
-        <div className="grid grid-cols-5 gap-3 w-full my-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full container gap-2">
           {borderCountries?.map((border) => (
             <CountryCard
               key={border.name}

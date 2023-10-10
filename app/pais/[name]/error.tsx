@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Error() {
   return (
@@ -9,10 +9,9 @@ export default function Error() {
       <h1 className="text-5xl text-center font-bold text-gray-800 my-16">
         Ops, ocorreu um erro ao exibir esse país!
       </h1>
-
       <Link
-        href="/"
         className="flex items-center py-2"
+        href="/"
       >
         <Image
           src="/arrow-back.svg"

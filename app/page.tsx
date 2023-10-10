@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
 import CountryCard from "./components/country-card";
 
 export type Country = {
